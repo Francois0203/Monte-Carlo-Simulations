@@ -1,0 +1,140 @@
+.nav {
+  background-color: var(--surface);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.navLink:hover {
+  background-color: var(--background);
+  color: var(--primary-color);
+}
+
+.navLink.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.icon {
+  font-size: 1.25rem;
+}
+
+.label {
+  font-size: 0.95rem;
+}
+
+.themeToggle {
+  background: var(--background);
+  border: 2px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.themeToggle:hover {
+  background: var(--surface);
+  border-color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+.themeToggle:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .rightSection {
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+  }
+
+  .navList {
+    flex: 1;
+    justify-content: space-around;
+  }
+
+  .navLink {
+    flex-direction: column;
+    padding: 0.5rem 0.75rem;
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.75rem;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+}

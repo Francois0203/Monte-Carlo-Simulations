@@ -1,0 +1,18 @@
+{
+  "title": "Tic-Tac-Toe",
+  "tagline": "When both players play randomly, who wins — and how often is it a draw?",
+  "overview": "Tic-Tac-Toe (Noughts and Crosses) is played on an N×N grid. Two players alternately mark empty squares with their symbol (X goes first, O goes second). The first player to place N consecutive marks in a row, column, or diagonal wins. On a standard 3×3 board with two perfect players, every game ends in a draw. But with random play, the first-mover advantage becomes visible.",
+  "rules": [
+    "Players alternate placing their mark (X always goes first).",
+    "Marks can be placed on any empty square.",
+    "The first player to align N marks in a row, column, or diagonal wins.",
+    "If all squares are filled with no winner, the game ends in a draw.",
+    "On a 3×3 board, a win requires 3 in a row. On 4×4 and 5×5 boards, you need N in a row.",
+    "Random play means each player picks uniformly at random from all available empty squares."
+  ],
+  "monteCarloExplanation": "Both players select moves uniformly at random from available empty squares. This removes any strategic bias, so the results purely reflect structural advantages: going first (X) has a natural edge because there are more positions where X can win. Larger boards tend to produce more draws as the game space expands. The simulation estimates outcome probabilities and average game length across thousands of games.",
+  "strategies": [
+    { "name": "Random X (First Player)", "description": "Selects any empty square uniformly at random. Benefits from going first." },
+    { "name": "Random O (Second Player)", "description": "Selects any empty square uniformly at random. Must overcome the first-mover disadvantage." }
+  ]
+}

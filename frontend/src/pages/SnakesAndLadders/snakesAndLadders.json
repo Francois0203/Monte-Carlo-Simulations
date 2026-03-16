@@ -1,0 +1,17 @@
+{
+  "title": "Snakes & Ladders",
+  "tagline": "No decisions, pure probability — every roll of the dice matters.",
+  "overview": "Snakes & Ladders is a classic board game of pure chance. Players roll a die each turn and advance their token. Landing on the base of a ladder sends you forward to an advantageous position; landing on a snake's head slides you back. The first player to reach or pass the final square wins. Because no player decisions are ever made, Monte Carlo simulation directly estimates the underlying probability distribution.",
+  "rules": [
+    "Players take turns rolling a single six-sided die and advancing forward.",
+    "Landing on the base of a ladder moves your token to the ladder's top (shortcut forward).",
+    "Landing on a snake's head slides your token to the snake's tail (setback backward).",
+    "The first player to reach the final square exactly (or pass it) wins the game.",
+    "With 'bounce back' enabled, overshooting the final square bounces you back by the excess.",
+    "All players start at square 1; the board wraps in a snake pattern from bottom to top."
+  ],
+  "monteCarloExplanation": "Since there are no strategic decisions in Snakes & Ladders, Monte Carlo simulation reveals the true probability distribution of outcomes. Running thousands of games shows the expected game length, win probability by player position (turn order matters!), and how board configuration — number of snakes and ladders, board size — affects the statistics.",
+  "strategies": [
+    { "name": "Random Play", "description": "All players play identically — only board position and dice rolls determine outcomes. No strategy exists in this game." }
+  ]
+}

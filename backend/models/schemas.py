@@ -34,6 +34,8 @@ class PlayerStats(BaseModel):
     total_won: float
     net_profit: float
     roi: float
+    profit_history: List[float] = Field(default_factory=list, description="Running profit over time")
+    outcome_distribution: Dict[str, int] = Field(default_factory=dict, description="Outcome counts")
 
 
 class BlackjackResults(BaseModel):
@@ -45,6 +47,7 @@ class BlackjackResults(BaseModel):
     dealer_busts: int
     dealer_bust_rate: float
     execution_time: float
+    chart_data: List[Dict] = Field(default_factory=list, description="Time-series data for charts")
 
 
 class PokerConfig(BaseModel):

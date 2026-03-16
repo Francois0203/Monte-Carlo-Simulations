@@ -5,7 +5,7 @@ import Home from './pages/Home/Home';
 import BlackjackPage from './pages/Blackjack/BlackjackPage';
 import PokerPage from './pages/Poker/PokerPage';
 import SnakesAndLaddersPage from './pages/SnakesAndLadders/SnakesAndLaddersPage';
-import NaughtsAndCrossesPage from './pages/NaughtsAndCrosses/NaughtsAndCrossesPage';
+import TicTacToePage from './pages/TicTacToe/TicTacToePage';
 import styles from './App.module.css';
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
             <Route path="/blackjack" element={<BlackjackPage />} />
             <Route path="/poker" element={<PokerPage />} />
             <Route path="/snakes-and-ladders" element={<SnakesAndLaddersPage />} />
-            <Route path="/naughts-and-crosses" element={<NaughtsAndCrossesPage />} />
+            <Route path="/naughts-and-crosses" element={<TicTacToePage />} />
           </Routes>
         </main>
       </div>

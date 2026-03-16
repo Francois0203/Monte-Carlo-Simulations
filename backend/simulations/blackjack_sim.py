@@ -364,12 +364,17 @@ def run_simulation(config: Dict[str, Any]) -> Dict[str, Any]:
     outcome_counts = {n: defaultdict(int) for n in player_names}
     payout_totals = defaultdict(float)
     total_bets = defaultdict(float)
+    profit_histories = {n: [] for n in player_names}
     dealer_bj_count = 0
     dealer_bust_count = 0
     total_hands = 0
     
+    # Chart data tracking (sample every N games for performance)
+    sample_interval = max(1, num_games // 100)
+    chart_data = []
+    
     # Run simulation
-    for _ in range(num_games):
+    for game_num in range(num_games):
         # Deal initial hands
         player_hands = [shoe.deal_hand(ace_high) for _ in players]
         dealer_hand = shoe.deal_hand(ace_high)
@@ -437,6 +442,14 @@ def run_simulation(config: Dict[str, Any]) -> Dict[str, Any]:
             payout_totals[player.name] += net_payout
             total_bets[player.name] += bets_round
             player.update_after_round(net_payout)
+            profit_histories[player.name].append(payout_totals[player.name])
+        
+        # Sample data points for chart
+        if game_num % sample_interval == 0:
+            chart_point = {"game": game_num}
+            for player in players:
+                chart_point[player.name] = round(payout_totals[player.name], 2)
+            chart_data.append(chart_point)
     
     # Calculate statistics
     player_stats = []
@@ -466,6 +479,14 @@ def run_simulation(config: Dict[str, Any]) -> Dict[str, Any]:
             "wins": wins,
             "losses": losses,
             "pushes": pushes,
+            "profit_history": [round(p, 2) for p in profit_histories[name]],
+            "outcome_distribution": {
+                "wins": wins,
+                "losses": losses,
+                "pushes": pushes,
+                "blackjacks": blackjacks,
+                "busts": busts
+            },
             "blackjacks": blackjacks,
             "busts": busts,
             "win_rate": round(win_rate, 4),
@@ -486,4 +507,5 @@ def run_simulation(config: Dict[str, Any]) -> Dict[str, Any]:
         "dealer_busts": dealer_bust_count,
         "dealer_bust_rate": round(dealer_bust_rate, 4),
         "execution_time": round(execution_time, 2),
+        "chart_data": chart_data,
     }

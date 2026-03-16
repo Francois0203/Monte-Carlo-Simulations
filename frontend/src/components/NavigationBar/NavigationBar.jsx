@@ -1,216 +1,110 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaHome, FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome } from 'react-icons/fa';
 import { GiCardJoker, GiCardRandom, GiSnake, GiTicTacToe } from 'react-icons/gi';
 import ThemeSwitch from '../ThemeSwitch';
 import styles from './NavigationBar.module.css';
 
-// ============================================
-// CONSTANTS
-// ============================================
+const ROUTES = [
+  { path: '/', label: 'Home', icon: FaHome, color: 'var(--accent-1)' },
+  { path: '/blackjack', label: 'Blackjack', icon: GiCardJoker, color: '#3b82f6' },
+  { path: '/poker', label: 'Poker', icon: GiCardRandom, color: '#8b5cf6' },
+  { path: '/snakes-and-ladders', label: 'Snakes & Ladders', icon: GiSnake, color: '#f59e0b' },
+  { path: '/naughts-and-crosses', label: 'Tic-Tac-Toe', icon: GiTicTacToe, color: '#06b6d4' },
+];
 
-// Icon set for navigation links
-const ICONS = [FaHome, GiCardJoker, GiCardRandom, GiSnake, GiTicTacToe];
-
-// ============================================
-// NAVIGATION BAR COMPONENT
-// ============================================
-// Liquid-glass burger menu navigation
-
-const NavigationBar = ({
-  theme,
-  toggleTheme,
-  burgerSize = 50,
-  className = ""
-}) => {
-  // ----------------------------------------
-  // State & Refs
-  // ----------------------------------------
-
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState(null);
-
-  const containerRef = useRef(null);
+export default function NavigationBar({ theme, toggleTheme }) {
+  const [open, setOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const dropdownRef = useRef(null);
+  const btnRef = useRef(null);
 
-  // ----------------------------------------
-  // Navigation Links
-  // ----------------------------------------
+  const current = ROUTES.find(r => r.path === location.pathname) || ROUTES[0];
+  const CurrentIcon = current.icon;
 
-  const links = [
-    { path: '/', label: 'Home' },
-    { path: '/blackjack', label: 'Blackjack' },
-    { path: '/poker', label: 'Poker' },
-    { path: '/snakes-and-ladders', label: 'Snakes & Ladders' },
-    { path: '/naughts-and-crosses', label: 'Tic-Tac-Toe' },
-  ];
-
-  // ----------------------------------------
-  // Derived Helpers
-  // ----------------------------------------
-
-  const burgerIconSize = Math.max(18, Math.round(burgerSize * 0.6));
-
-  const isActive = (link) => {
-    return location.pathname === link.path;
-  };
-
-  // ----------------------------------------
-  // Event Handlers
-  // ----------------------------------------
-
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-    setHoveredLink(null);
-  };
-
-  const handleLinkClick = (link) => {
-    navigate(link.path);
-    closeMenu();
-  };
-
-  // ----------------------------------------
-  // Effects
-  // ----------------------------------------
-
+  // Close on outside click
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
-        closeMenu();
+    const handler = (e) => {
+      if (
+        dropdownRef.current && !dropdownRef.current.contains(e.target) &&
+        btnRef.current && !btnRef.current.contains(e.target)
+      ) {
+        setOpen(false);
       }
     };
-
-    if (menuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [menuOpen]);
-
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === 'Escape') {
-        closeMenu();
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  // ----------------------------------------
-  // Render
-  // ----------------------------------------
+  // Close on Escape
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, []);
+
+  // Close on route change
+  useEffect(() => { setOpen(false); }, [location.pathname]);
+
+  const go = (path) => { navigate(path); setOpen(false); };
 
   return (
-    <div className={`${styles.navbarContainer} ${className}`} ref={containerRef}>
-      <nav className={styles.navbar} aria-label="Main navigation">
-        
-        {/* Burger Button */}
+    <header className={styles.topBar}>
+      {/* Left: menu button + page title */}
+      <div className={styles.left}>
         <button
-          className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
-          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={menuOpen}
-          onClick={toggleMenu}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              toggleMenu();
-            }
-          }}
-          style={{
-            width: burgerSize,
-            height: burgerSize,
-            minWidth: burgerSize,
-            minHeight: burgerSize,
-          }}
+          ref={btnRef}
+          className={`${styles.menuBtn} ${open ? styles.menuBtnOpen : ''}`}
+          onClick={() => setOpen(v => !v)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
         >
-          {menuOpen ? (
-            <FaTimes size={burgerIconSize} className={styles.burgerIcon} />
-          ) : (
-            <FaBars size={burgerIconSize} className={styles.burgerIcon} />
-          )}
+          {open ? <FaTimes size={16} /> : <FaBars size={16} />}
         </button>
 
-        {/* Dropdown Menu */}
-        {menuOpen && (
-          <div
-            className={`${styles.menuDropdown} ${styles.menuDropdownOpen}`}
-            role="menu"
-          >
-            <ul className={styles.linkList} role="menubar">
-              {links.map((link, index) => {
-                const Icon = ICONS[index];
-                const active = isActive(link);
-                const hovered = hoveredLink === index;
+        <div className={styles.divider} />
 
-                return (
-                  <li
-                    key={`nav-${index}`}
-                    className={styles.linkItem}
-                    role="none"
-                    onMouseEnter={() => setHoveredLink(index)}
-                    onMouseLeave={() => setHoveredLink(null)}
-                  >
-                    <div
-                      className={[
-                        styles.link,
-                        hovered ? styles.linkHovered : '',
-                        active ? styles.linkActive : '',
-                      ].join(' ')}
-                      onClick={() => handleLinkClick(link)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          handleLinkClick(link);
-                        }
-                      }}
-                      role="menuitem"
-                      tabIndex={0}
-                      aria-current={active ? 'page' : undefined}
-                      data-index={index}
-                    >
-                      {/* Icon pill */}
-                      <div className={styles.linkIcon}>
-                        <Icon size={20} />
-                      </div>
-
-                      {/* Label */}
-                      <span className={styles.linkLabel}>{link.label}</span>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-
-            {/* Theme Switch in Menu */}
-            <div className={styles.themeContainer}>
-              <ThemeSwitch theme={theme} toggleTheme={toggleTheme} />
-              <span className={styles.themeLabel}>Toggle Theme</span>
-            </div>
+        <div className={styles.pageLabel} style={{ '--route-color': current.color }}>
+          <CurrentIcon className={styles.pageIcon} />
+          <div className={styles.pageLabelText}>
+            <span className={styles.pageName}>{current.label}</span>
+            <span className={styles.pageSub}>Monte Carlo</span>
           </div>
-        )}
-      </nav>
+        </div>
+      </div>
 
-      {/* Backdrop Overlay - outside nav, below burger */}
-      {menuOpen && (
-        <div
-          className={styles.backdrop}
-          onClick={closeMenu}
-          aria-hidden="true"
-        />
+      {/* Right: theme switch */}
+      <div className={styles.right}>
+        <ThemeSwitch theme={theme} toggleTheme={toggleTheme} />
+      </div>
+
+      {/* Dropdown nav panel */}
+      {open && (
+        <nav
+          ref={dropdownRef}
+          className={styles.dropdown}
+          aria-label="Site navigation"
+        >
+          {ROUTES.map(route => {
+            const Icon = route.icon;
+            const isActive = location.pathname === route.path;
+            return (
+              <button
+                key={route.path}
+                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+                style={{ '--link-color': route.color }}
+                onClick={() => go(route.path)}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                <span className={styles.navLinkIcon}><Icon /></span>
+                <span className={styles.navLinkLabel}>{route.label}</span>
+                {isActive && <span className={styles.navLinkDot} />}
+              </button>
+            );
+          })}
+        </nav>
       )}
-    </div>
+    </header>
   );
-};
-
-// ============================================
-// EXPORTS
-// ============================================
-
-export default NavigationBar;
+}

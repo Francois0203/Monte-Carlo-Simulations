@@ -1,0 +1,599 @@
+/* ============================================================
+   SimulationPage.module.css
+   Shared layout for all 4 simulation pages.
+   Page-specific accent colour set via --page-accent inline.
+   Layout: [config row] → [info section] → [dashboard]
+   ============================================================ */
+
+/* ---- Page root ---- */
+.page {
+  --page-accent: #3b82f6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   CONFIG SECTION — top horizontal toolbar of inputs + run btn
+   ============================================================ */
+.configSection {
+  background: var(--card-primary);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  flex-shrink: 0;
+}
+
+.configForm {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.configInputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  flex: 1;
+  align-items: flex-end;
+}
+
+/* Individual labelled input */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.inputGroup label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.inputGroup input,
+.inputGroup select {
+  padding: 0.5rem 0.65rem;
+  min-width: 80px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  border-color: var(--page-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--page-accent) 18%, transparent);
+}
+
+.inputGroup input:hover,
+.inputGroup select:hover {
+  border-color: color-mix(in srgb, var(--page-accent) 45%, var(--border));
+}
+
+/* Toggle row — labelled checkbox list */
+.toggleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.toggleGroup > span {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 0.1rem;
+}
+
+.toggleGroup label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggleGroup label input[type="checkbox"] {
+  accent-color: var(--page-accent);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+/* Chip group — multi-select tags */
+.chipGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 180px;
+}
+
+.chipGroupLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+  line-height: 1.4;
+}
+
+.chip:hover {
+  border-color: var(--page-accent);
+  color: var(--page-accent);
+  background: color-mix(in srgb, var(--page-accent) 8%, var(--surface));
+}
+
+.chipActive {
+  border-color: var(--page-accent);
+  background: color-mix(in srgb, var(--page-accent) 14%, transparent);
+  color: var(--page-accent);
+  font-weight: 600;
+}
+
+/* Run button */
+.configActions {
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.runButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.575rem 1.25rem;
+  background: var(--page-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  outline: none;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--page-accent) 30%, transparent);
+}
+
+.runButton:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--page-accent) 88%, black);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--page-accent) 38%, transparent);
+}
+
+.runButton:active:not(:disabled) {
+  transform: none;
+  box-shadow: none;
+}
+
+.runButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ============================================================
+   INFO SECTION — collapsible game description from JSON
+   ============================================================ */
+.infoSection {
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.infoToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.7rem 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.infoToggle:hover {
+  color: var(--page-accent);
+  background: color-mix(in srgb, var(--page-accent) 5%, transparent);
+}
+
+.infoToggle svg {
+  flex-shrink: 0;
+}
+
+.infoBody {
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: var(--surface);
+  animation: slideDown 0.18s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.infoOverview {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem;
+  max-width: 720px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.infoRules h4,
+.infoMonte h4 {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--page-accent);
+  margin-bottom: 0.625rem;
+}
+
+.infoRules ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.infoMonte p {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================================
+   LOADING / ERROR STATES
+   ============================================================ */
+.loadingWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  flex: 1;
+}
+
+.spinner {
+  width: 38px;
+  height: 38px;
+  border: 3px solid var(--border);
+  border-top-color: var(--page-accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.errorBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 1.5rem;
+  padding: 0.875rem 1rem;
+  background: color-mix(in srgb, #ef4444 10%, var(--card-primary));
+  border: 1px solid color-mix(in srgb, #ef4444 28%, transparent);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.errorBanner button {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  padding: 0 0.25rem;
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+}
+
+.errorBanner button:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.emptyState svg {
+  font-size: 2.5rem;
+  color: var(--page-accent);
+  opacity: 0.35;
+}
+
+.emptyState h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.emptyState p {
+  font-size: 0.875rem;
+  margin: 0;
+  max-width: 380px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   DASHBOARD — stats + charts shown after simulation
+   ============================================================ */
+.dashboard {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Stat cards row */
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.statCard {
+  background: var(--card-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: default;
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--page-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.statCard:hover {
+  border-color: color-mix(in srgb, var(--page-accent) 45%, var(--border));
+  box-shadow: var(--shadow-sm);
+}
+
+.statCard:hover::before {
+  transform: scaleX(1);
+}
+
+.statLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+
+.statValue {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--page-accent);
+  line-height: 1;
+}
+
+.statSub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+/* Charts grid */
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.25rem;
+}
+
+.chartCard {
+  background: var(--card-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: box-shadow var(--transition-fast);
+}
+
+.chartCard:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.chartTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Data table */
+.tableCard {
+  background: var(--card-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tableCard .chartTitle {
+  padding: 1.125rem 1.25rem 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.table th {
+  text-align: left;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.table td {
+  padding: 0.7rem 1.25rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover td {
+  background: color-mix(in srgb, var(--page-accent) 4%, transparent);
+}
+
+.colorDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.positive { color: #10b981; }
+.negative { color: #ef4444; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .configSection {
+    padding: 1rem;
+  }
+
+  .configForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .configInputs {
+    flex-direction: column;
+  }
+
+  .inputGroup {
+    width: 100%;
+  }
+
+  .inputGroup input,
+  .inputGroup select {
+    min-width: 0;
+  }
+
+  .chipGroup {
+    min-width: 0;
+  }
+
+  .configActions {
+    align-items: stretch;
+  }
+
+  .runButton {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .dashboard {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .statRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .statRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}

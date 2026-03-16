@@ -29,8 +29,8 @@ export const snakesAndLaddersApi = {
   simulate: (config) => api.post('/api/snakes-and-ladders/simulate', config),
 };
 
-// Naughts and Crosses API
-export const naughtsAndCrossesApi = {
+// Tic Tac Toe API (formerly Naughts and Crosses)
+export const ticTacToeApi = {
   simulate: (config) => api.post('/api/naughts-and-crosses/simulate', config),
 };
 

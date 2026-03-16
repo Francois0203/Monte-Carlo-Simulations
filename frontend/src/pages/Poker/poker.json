@@ -1,0 +1,24 @@
+{
+  "title": "Texas Hold'em Poker",
+  "tagline": "Strategy, position, and psychology collide over thousands of hands.",
+  "overview": "Texas Hold'em is the world's most popular poker variant. Each player receives two private hole cards, and five community cards are revealed in stages: the Flop (3 cards), Turn (1 card), and River (1 card). Players may bet, raise, call, or fold at each stage. The player making the best five-card hand from any combination of hole cards and community cards wins the pot.",
+  "rules": [
+    "Each player is dealt two private hole cards face-down.",
+    "Three community cards are dealt face-up (the Flop), then one more (the Turn), then a final card (the River).",
+    "Betting occurs after the hole cards, after the Flop, Turn, and River.",
+    "Players can fold (forfeit), call (match), raise (increase), or check (pass) depending on the betting action.",
+    "At showdown, the best five-card hand using any combination of hole and community cards wins.",
+    "Betting order rotates clockwise; position (acting last) is a major strategic advantage."
+  ],
+  "monteCarloExplanation": "The simulation pits different player archetypes head-to-head over many hands. Since no randomisation is removed, the results reflect genuine long-run profitability of each style — including blind steals, position plays, and variance. Key metrics like VPIP (how often a player voluntarily puts money in the pot) and PFR (pre-flop raise %) reveal how tight or loose each strategy is.",
+  "strategies": [
+    { "name": "Calling Station", "description": "Rarely folds or raises — calls almost every bet. Predictable and exploitable." },
+    { "name": "Tight Passive", "description": "Plays few hands but rarely bets aggressively. Loses value on strong hands." },
+    { "name": "Tight Aggressive (TAG)", "description": "Plays few hands, bets aggressively when in. The most profitable style long-term." },
+    { "name": "Loose Aggressive (LAG)", "description": "Plays many hands aggressively. High variance but profitable against weaker players." },
+    { "name": "Pot Odds Player", "description": "Makes decisions based on mathematical pot odds and implied odds." },
+    { "name": "Bluffer", "description": "Frequently bluffs and semi-bluffs — works until opponents adjust." },
+    { "name": "Position Aware", "description": "Tightens from early position and widens from late position." },
+    { "name": "GTO Balanced", "description": "Game Theory Optimal — mathematically unexploitable mixed strategy." }
+  ]
+}

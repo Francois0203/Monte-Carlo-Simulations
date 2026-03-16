@@ -1,384 +1,198 @@
-/* ==================== Global Link Reset ==================== */
-a {
-    color: inherit;
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
+/* =============================================================
+   Components.css — Global base styles
+   Imported globally in main.jsx. Provides clean typography,
+   form elements, scrollbars, and utility resets.
+   Page-specific colours live in CSS Modules.
+   ============================================================= */
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-a:hover {
-    text-decoration: none;
-}
-
-a:focus {
-    outline: none;
-}
-
-a:focus-visible {
-    outline: 2px solid var(--accent-1);
-    outline-offset: 2px;
-    border-radius: var(--radius-sm);
-}
-
-/* ==================== Global Mobile Fix ==================== */
-* {
-    box-sizing: border-box;
-}
-
-html {
-    overflow-x: hidden;
-    max-width: 100vw;
-}
-
+/* ---- Body ---- */
 body {
-    overflow-x: hidden;
-    max-width: 100vw;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--transition-slow), color var(--transition-slow);
 }
 
-/* ==================== Typography ==================== */
-body {
-    font-size: var(--font-size-base);
-    color: var(--primary-text-color);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-    transition: color var(--transition-base), background-color var(--transition-base);
+/* ---- Headings ---- */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color var(--transition-base);
 }
+
+h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+h2 { font-size: clamp(1.375rem, 3vw, 1.875rem); font-weight: 700; }
+h3 { font-size: clamp(1.125rem, 2vw, 1.375rem); font-weight: 600; }
+h4 { font-size: 1rem; font-weight: 600; }
 
 p {
-    font-size: var(--font-size-base);
-    color: var(--primary-text-color);
-    margin: var(--spacing-sm) 0;
-    transition: color var(--transition-base);
-    line-height: 1.7;
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  transition: color var(--transition-base);
 }
 
-h1 {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin: var(--spacing-sm) 0 var(--spacing-md) 0;
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% 200%;
-    animation: gradientShift 8s ease infinite;
-    overflow: visible;
-}
-
-h2 {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    font-size: clamp(var(--font-size-xl), 3.5vw, var(--font-size-3xl));
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
-    background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% 200%;
-    animation: gradientShift 8s ease infinite;
-    overflow: visible;
-}
-
-h3 {
-    font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-xl));
-    font-weight: 600;
-    line-height: 1.3;
-    color: var(--accent-1);
-    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
-    transition: color var(--transition-base);
-}
-
-h4 {
-    font-size: var(--font-size-md);
-    font-weight: 600;
-    color: var(--accent-2);
-    margin: var(--spacing-sm) 0;
-    transition: color var(--transition-base);
-}
-
-h5 {
-    font-size: var(--font-size-base);
-    font-weight: 600;
-    color: var(--secondary-text-color);
-    margin: var(--spacing-sm) 0;
-}
-
-h6 {
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: var(--tertiary-text-color);
-    margin: var(--spacing-sm) 0;
-}
-
-/* Subtle animation for headings */
-@keyframes gradientShift {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-}
-
-
-/* ==================== Links ==================== */
+/* ---- Links ---- */
 a {
-    color: var(--accent-1);
-    text-decoration: none;
-    cursor: pointer;
-    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
-    position: relative;
+  color: var(--accent-1);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
-    color: var(--accent-hover);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
+  color: var(--accent-hover);
 }
 
-a:active {
-    color: var(--accent-2);
-    text-decoration: none;
+/* ---- Form base resets ---- */
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
 }
 
-a:focus-visible {
-    outline: 2px solid var(--accent-1);
-    outline-offset: 3px;
-    border-radius: var(--radius-sm);
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-
-/* ==================== Form Elements ==================== */
-input,
-textarea,
-select {
-    font-family: inherit;
-    font-size: var(--font-size-base);
-    background-color: var(--background-1);
-    color: var(--primary-text-color);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-md);
-    border: 2px solid var(--border-color);
-    position: relative;
-    transition:
-        background-color var(--transition-base),
-        border-color var(--transition-base),
-        transform var(--transition-fast),
-        box-shadow var(--transition-base);
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-1) 15%, transparent);
 }
 
-input:hover,
-textarea:hover,
+input[type="text"]:hover,
+input[type="number"]:hover,
 select:hover {
-    border-color: var(--border-color-hover);
+  border-color: var(--border-color-hover);
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-    border-color: var(--accent-1);
-    box-shadow: 0 0 0 3px var(--accent-1-background);
+/* Number input — hide spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] { -moz-appearance: textfield; }
+
+/* Select — custom arrow */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.25rem;
+  cursor: pointer;
 }
 
-input:disabled,
-textarea:disabled,
-select:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+/* Checkbox & Radio */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--accent-1);
+  flex-shrink: 0;
 }
 
-label {
-    color: var(--primary-text-color);
-    font-weight: 500;
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--spacing-xs);
-    display: block;
-}
-
-
-/* ==================== Buttons ==================== */
+/* Button reset */
 button {
-    font-family: inherit;
-    font-size: var(--font-size-base);
-    font-weight: 600;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-md);
-    border: none;
-    cursor: pointer;
-    transition:
-        background-color var(--transition-fast),
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast);
-    background: var(--accent-1);
-    color: var(--primary-text-color);
-    box-shadow: var(--shadow-sm);
-}
-
-button:hover:not(:disabled) {
-    background: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-button:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: var(--shadow-sm);
-}
-
-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
 }
 
 button:focus-visible {
-    outline: 2px solid var(--accent-1);
-    outline-offset: 3px;
+  outline: 2px solid var(--accent-1);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
-/* Button variants */
-button.secondary {
-    background: var(--background-3);
-    color: var(--primary-text-color);
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-button.secondary:hover:not(:disabled) {
-    background: var(--background-4);
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-button.outline {
-    background: transparent;
-    border: 2px solid var(--accent-1);
-    color: var(--accent-1);
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
 }
 
-button.outline:hover:not(:disabled) {
-    background: var(--accent-1);
-    color: var(--primary-text-color);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color-hover);
 }
 
-
-/* ==================== Cards ==================== */
-.card {
-    background: var(--background-1);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
-    transition: all var(--transition-base);
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
 }
 
-.card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+/* ---- Text selection ---- */
+::selection {
+  background: color-mix(in srgb, var(--accent-1) 25%, transparent);
+  color: var(--text-primary);
 }
 
-
-/* ==================== Tables ==================== */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--background-1);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
+/* ---- Focus ring ---- */
+:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 2px;
 }
 
-th,
-td {
-    padding: var(--spacing-md);
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-
-th {
-    background: var(--background-3);
-    font-weight: 700;
-    color: var(--primary-text-color);
-    text-transform: uppercase;
-    font-size: var(--font-size-xs);
-    letter-spacing: 0.05em;
-}
-
-tr:hover {
-    background: var(--background-2);
-}
-
-tr:last-child td {
-    border-bottom: none;
-}
-
-
-/* ==================== Loading States ==================== */
-.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px;
-}
-
-.spinner {
-    border: 3px solid var(--border-color);
-    border-top-color: var(--accent-1);
-    border-radius: var(--radius-full);
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* ==================== Utilities ==================== */
-.text-center {
-    text-align: center;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.mb-0 {
-    margin-bottom: 0;
-}
-
-.mb-sm {
-    margin-bottom: var(--spacing-sm);
-}
-
-.mb-md {
-    margin-bottom: var(--spacing-md);
-}
-
-.mb-lg {
-    margin-bottom: var(--spacing-lg);
-}
-
-.mt-0 {
-    margin-top: 0;
-}
-
-.mt-sm {
-    margin-top: var(--spacing-sm);
-}
-
-.mt-md {
-    margin-top: var(--spacing-md);
-}
-
-.mt-lg {
-    margin-top: var(--spacing-lg);
+/* ---- Utility ---- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

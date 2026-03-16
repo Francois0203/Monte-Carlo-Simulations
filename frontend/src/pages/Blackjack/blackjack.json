@@ -1,0 +1,24 @@
+{
+  "title": "Blackjack",
+  "tagline": "Beat the dealer without going over 21.",
+  "overview": "Blackjack is a casino card game where players compete against the dealer, not each other. Each player and the dealer receive two cards; one dealer card stays hidden. Players decide to hit (draw) or stand (stop) to build a hand closer to 21 than the dealer without busting. The house edge is among the lowest of all casino games — especially when playing Basic Strategy.",
+  "rules": [
+    "Cards 2–10 are worth face value; J, Q, K count as 10; Aces are 1 or 11.",
+    "Players bust and lose immediately if their total exceeds 21.",
+    "The dealer must hit on any total below 17 and stand on 17 or higher.",
+    "A natural blackjack (Ace + 10-value card on the first two cards) typically pays 3:2.",
+    "Players may split pairs into two separate hands (if rules allow).",
+    "Players may double their bet after seeing their first two cards (double down)."
+  ],
+  "monteCarloExplanation": "By simulating tens of thousands of hands for each strategy, we estimate the long-run win rate and ROI for every playing style — from mathematically optimal Basic Strategy to risky Martingale betting. Each strategy plays independently with its own bet sizing, so the results show the true statistical edge (or disadvantage) of each approach over a casino session.",
+  "strategies": [
+    { "name": "Never Bust", "description": "Stand on any 12+ to guarantee no bust. Safe but surrenders good hitting opportunities." },
+    { "name": "Safe", "description": "Minimal risk — stand early, rarely doubles or splits." },
+    { "name": "Basic Strategy", "description": "Mathematically optimal play based on the dealer's up-card. Minimises the house edge." },
+    { "name": "Aggressive", "description": "High-risk, high-variance play — doubles and hits frequently." },
+    { "name": "Mimic Dealer", "description": "Copies dealer rules exactly (hit below 17, stand on 17+)." },
+    { "name": "Gut Feel", "description": "Typical uninformed player making instinctive decisions." },
+    { "name": "Card Counter", "description": "Basic strategy plus bet scaling based on a running Hi-Lo count." },
+    { "name": "Martingale", "description": "Basic strategy combined with doubling the bet after every loss to recover losses." }
+  ]
+}

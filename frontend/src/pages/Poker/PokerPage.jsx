@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { GiCardRandom } from 'react-icons/gi';
 import { pokerApi } from '../../utils/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -72,7 +73,7 @@ const PokerPage = () => {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1>♠️ Poker Simulation</h1>
+        <h1><GiCardRandom className={styles.icon} style={{ color: '#8b5cf6' }} /> Poker Simulation</h1>
         <p>Test poker strategies in Texas Hold'em</p>
       </header>
 

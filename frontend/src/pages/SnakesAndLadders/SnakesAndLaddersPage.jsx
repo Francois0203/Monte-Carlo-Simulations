@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { GiSnake } from 'react-icons/gi';
 import { snakesAndLaddersApi } from '../../utils/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -45,7 +46,7 @@ const SnakesAndLaddersPage = () => {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1>🎲 Snakes & Ladders Simulation</h1>
+        <h1><GiSnake className={styles.icon} style={{ color: '#f59e0b' }} /> Snakes & Ladders Simulation</h1>
         <p>Analyze probabilities in this classic board game</p>
       </header>
 

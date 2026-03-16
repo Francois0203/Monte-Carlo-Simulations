@@ -217,7 +217,7 @@ button {
         transform var(--transition-fast),
         box-shadow var(--transition-fast);
     background: var(--accent-1);
-    color: white;
+    color: var(--primary-text-color);
     box-shadow: var(--shadow-sm);
 }
 
@@ -260,7 +260,7 @@ button.outline {
 
 button.outline:hover:not(:disabled) {
     background: var(--accent-1);
-    color: white;
+    color: var(--primary-text-color);
 }
 
 

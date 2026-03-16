@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { GiTicTacToe } from 'react-icons/gi';
 import { naughtsAndCrossesApi } from '../../utils/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -42,7 +43,7 @@ const NaughtsAndCrossesPage = () => {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1>⭕ Tic-Tac-Toe Simulation</h1>
+        <h1><GiTicTacToe className={styles.icon} style={{ color: '#3b82f6' }} /> Tic-Tac-Toe Simulation</h1>
         <p>Explore random play outcomes in Naughts and Crosses</p>
       </header>
 

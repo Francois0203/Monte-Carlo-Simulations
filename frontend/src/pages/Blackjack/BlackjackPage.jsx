@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { GiCardJoker } from 'react-icons/gi';
 import { blackjackApi } from '../../utils/api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -67,7 +68,7 @@ const BlackjackPage = () => {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1>🃏 Blackjack Simulation</h1>
+        <h1><GiCardJoker className={styles.icon} /> Blackjack Simulation</h1>
         <p>Compare different blackjack strategies with configurable rules</p>
       </header>
 

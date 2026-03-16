@@ -2,19 +2,42 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--background-0);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .main {
   flex: 1;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--spacing-2xl) var(--spacing-lg);
   width: 100%;
   box-sizing: border-box;
+  animation: fadeIn var(--transition-slow);
+  overflow-x: hidden;
 }
 
-@media (max-width: 768px) {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
   .main {
-    padding: 1rem;
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: var(--spacing-lg) var(--spacing-sm);
   }
 }

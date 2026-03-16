@@ -1,0 +1,384 @@
+/* ==================== Global Link Reset ==================== */
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--accent-1);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* ==================== Global Mobile Fix ==================== */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* ==================== Typography ==================== */
+body {
+    font-size: var(--font-size-base);
+    color: var(--primary-text-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    transition: color var(--transition-base), background-color var(--transition-base);
+}
+
+p {
+    font-size: var(--font-size-base);
+    color: var(--primary-text-color);
+    margin: var(--spacing-sm) 0;
+    transition: color var(--transition-base);
+    line-height: 1.7;
+}
+
+h1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: var(--spacing-sm) 0 var(--spacing-md) 0;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    overflow: visible;
+}
+
+h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: clamp(var(--font-size-xl), 3.5vw, var(--font-size-3xl));
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+    background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    overflow: visible;
+}
+
+h3 {
+    font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-xl));
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--accent-1);
+    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+    transition: color var(--transition-base);
+}
+
+h4 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--accent-2);
+    margin: var(--spacing-sm) 0;
+    transition: color var(--transition-base);
+}
+
+h5 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--secondary-text-color);
+    margin: var(--spacing-sm) 0;
+}
+
+h6 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--tertiary-text-color);
+    margin: var(--spacing-sm) 0;
+}
+
+/* Subtle animation for headings */
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+
+/* ==================== Links ==================== */
+a {
+    color: var(--accent-1);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+    position: relative;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+a:active {
+    color: var(--accent-2);
+    text-decoration: none;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--accent-1);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+
+/* ==================== Form Elements ==================== */
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    background-color: var(--background-1);
+    color: var(--primary-text-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-color);
+    position: relative;
+    transition:
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        transform var(--transition-fast),
+        box-shadow var(--transition-base);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+    border-color: var(--border-color-hover);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 3px var(--accent-1-background);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+label {
+    color: var(--primary-text-color);
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    display: block;
+}
+
+
+/* ==================== Buttons ==================== */
+button {
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+    background: var(--accent-1);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+button:hover:not(:disabled) {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--accent-1);
+    outline-offset: 3px;
+}
+
+/* Button variants */
+button.secondary {
+    background: var(--background-3);
+    color: var(--primary-text-color);
+}
+
+button.secondary:hover:not(:disabled) {
+    background: var(--background-4);
+}
+
+button.outline {
+    background: transparent;
+    border: 2px solid var(--accent-1);
+    color: var(--accent-1);
+}
+
+button.outline:hover:not(:disabled) {
+    background: var(--accent-1);
+    color: white;
+}
+
+
+/* ==================== Cards ==================== */
+.card {
+    background: var(--background-1);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+
+/* ==================== Tables ==================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--background-1);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background: var(--background-3);
+    font-weight: 700;
+    color: var(--primary-text-color);
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.05em;
+}
+
+tr:hover {
+    background: var(--background-2);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ==================== Loading States ==================== */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.spinner {
+    border: 3px solid var(--border-color);
+    border-top-color: var(--accent-1);
+    border-radius: var(--radius-full);
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ==================== Utilities ==================== */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-sm {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mb-md {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--spacing-lg);
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mt-sm {
+    margin-top: var(--spacing-sm);
+}
+
+.mt-md {
+    margin-top: var(--spacing-md);
+}
+
+.mt-lg {
+    margin-top: var(--spacing-lg);
+}

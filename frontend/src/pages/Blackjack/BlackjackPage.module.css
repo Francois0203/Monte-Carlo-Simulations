@@ -1,166 +1,286 @@
+/* ==================== MONTE CARLO BLACKJACK PAGE (CASINO THEME) ==================== */
+
 .page {
-  padding: 2rem 0;
+  padding: var(--spacing-xl) 0;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-3xl);
+  animation: fadeIn var(--transition-slow);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  line-height: 1.1;
 }
 
 .header p {
-  color: var(--text-secondary);
-  font-size: 1.1rem;
+  color: var(--secondary-text-color);
+  font-size: clamp(var(--font-size-base), 2vw, var(--font-size-lg));
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .content {
   display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 2rem;
+  grid-template-columns: minmax(320px, 400px) 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
 }
 
+/* ==================== SIDEBAR / CONFIGURATION PANEL ==================== */
+
 .sidebar {
-  background: var(--surface);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: var(--shadow);
+  background: var(--background-1);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
   height: fit-content;
   position: sticky;
-  top: 100px;
+  top: 90px;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.sidebar:hover {
+  box-shadow: var(--shadow-xl), 0 0 30px rgba(220, 38, 38, 0.1);
 }
 
 .form h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--primary-color);
+  font-size: clamp(var(--font-size-lg), 3vw, var(--font-size-xl));
+  margin-bottom: var(--spacing-lg);
+  color: var(--accent-1);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .formGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .formGroup label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-sm);
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--primary-text-color);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.01em;
 }
 
 .formGroup input,
 .formGroup select {
   width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  background: var(--background-0);
+  color: var(--primary-text-color);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-fast);
+  font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 3px var(--accent-background);
+}
+
+.formGroup input:hover,
+.formGroup select:hover {
+  border-color: var(--border-color-hover);
 }
 
 .checkboxGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .checkboxGroup label {
   display: flex;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--spacing-sm);
   cursor: pointer;
   font-weight: normal;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.checkboxGroup label:hover {
+  background: var(--background-2);
 }
 
 .checkboxGroup input[type="checkbox"] {
-  margin-right: 0.5rem;
-  width: auto;
+  margin-right: var(--spacing-sm);
+  width: 18px;
+  height: 18px;
   cursor: pointer;
+  accent-color: var(--accent-1);
 }
 
 .strategiesGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
 }
 
 .strategyButton {
-  padding: 0.75rem;
-  background: var(--background);
+  padding: var(--spacing-md);
+  background: var(--background-2);
   border: 2px solid var(--border-color);
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  color: var(--primary-text-color);
+  text-align: center;
 }
 
-.strategyButton:hover {
-  border-color: var(--primary-color);
-  background: rgba(37, 99, 235, 0.05);
+.strategyButton:hover:not(.active) {
+  border-color: var(--accent-1);
+  background: var(--accent-background);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .strategyButton.active {
-  background: var(--primary-color);
+  background: var(--accent-1);
   color: white;
-  border-color: var(--primary-color);
+  border-color: var(--accent-1);
+  box-shadow: var(--shadow-glow);
 }
 
 .submitButton {
   width: 100%;
-  padding: 1rem;
-  background: var(--primary-color);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
   color: white;
-  border-radius: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: all 0.2s;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow-md);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .submitButton:hover:not(:disabled) {
-  background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==================== MAIN CONTENT / RESULTS AREA ==================== */
+
 .main {
-  background: var(--surface);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: var(--shadow);
-  min-height: 400px;
+  background: var(--background-1);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
+  min-height: 500px;
+  border: 1px solid var(--border-color);
+  animation: slideIn var(--transition-slow);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .results h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--primary-color);
+  font-size: clamp(var(--font-size-lg), 3vw, var(--font-size-xl));
+  margin-bottom: var(--spacing-lg);
+  color: var(--accent-1);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .resultsHeader {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
 }
 
 .stat {
-  background: var(--background);
-  padding: 1rem;
-  border-radius: 0.5rem;
+  background: var(--background-2);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-lg);
   text-align: center;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.stat:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-1);
 }
 
 .statLabel {
   display: block;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+  font-size: var(--font-size-xs);
+  color: var(--tertiary-text-color);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .statValue {
   display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
+  font-size: clamp(var(--font-size-xl), 3vw, var(--font-size-2xl));
+  font-weight: 800;
+  color: var(--accent-1);
+  font-variant-numeric: tabular-nums;
 }
 
 .playersTable {
   overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
 }
 
 .playersTable table {
@@ -170,72 +290,220 @@
 
 .playersTable th,
 .playersTable td {
-  padding: 1rem;
+  padding: var(--spacing-md) var(--spacing-lg);
   text-align: left;
   border-bottom: 1px solid var(--border-color);
+  font-size: var(--font-size-sm);
 }
 
 .playersTable th {
-  background: var(--background);
-  font-weight: 600;
-  color: var(--text-primary);
+  background: var(--background-3);
+  font-weight: 700;
+  color: var(--primary-text-color);
   position: sticky;
   top: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-xs);
+  z-index: 1;
+}
+
+.playersTable tr:hover {
+  background: var(--background-2);
 }
 
 .playersTable td {
-  color: var(--text-secondary);
+  color: var(--secondary-text-color);
+  font-variant-numeric: tabular-nums;
 }
 
 .strategyName {
-  font-weight: 600;
-  color: var(--text-primary) !important;
+  font-weight: 700;
+  color: var(--primary-text-color) !important;
+  font-size: var(--font-size-base);
 }
 
 .positive {
   color: var(--success-color) !important;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .negative {
-  color: var(--danger-color) !important;
-  font-weight: 600;
+  color: var(--error-color) !important;
+  font-weight: 700;
 }
 
-@media (max-width: 1024px) {
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Large tablets and small desktops */
+@media (max-width: 1200px) {
   .content {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    position: static;
-  }
-
-  .strategiesGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .header h1 {
-    font-size: 2rem;
+    grid-template-columns: minmax(280px, 350px) 1fr;
+    gap: var(--spacing-lg);
   }
 
   .sidebar,
   .main {
-    padding: 1.5rem;
+    padding: var(--spacing-lg);
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .page {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .sidebar {
+    position: static;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .main {
+    max-width: none;
+  }
+
+  .strategiesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .resultsHeader {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile landscape and small tablets */
+@media (max-width: 768px) {
+  .sidebar,
+  .main {
+    padding: var(--spacing-md);
   }
 
   .resultsHeader {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .stat {
+    padding: var(--spacing-sm) var(--spacing-md);
   }
 
   .playersTable {
-    font-size: 0.9rem;
+    font-size: var(--font-size-xs);
   }
 
   .playersTable th,
   .playersTable td {
-    padding: 0.75rem 0.5rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .strategiesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+  }
+
+  .strategyButton {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 640px) {
+  .page {
+    padding: var(--spacing-md) 0;
+  }
+
+  .header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .sidebar,
+  .main {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-lg);
+  }
+
+  .content {
+    gap: var(--spacing-md);
+  }
+
+  .resultsHeader {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .formGroup,
+  .checkboxGroup {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .submitButton {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+  }
+
+  /* Stack table on very small screens */
+  .playersTable {
+    display: block;
+    max-width: 100%;
+  }
+
+  .playersTable table {
+    display: block;
+  }
+
+  .playersTable thead {
+    display: none;
+  }
+
+  .playersTable tr {
+    display: block;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    background: var(--background-2);
+  }
+
+  .playersTable td {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+  }
+
+  .playersTable td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--primary-text-color);
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+  .sidebar,
+  .main {
+    padding: var(--spacing-sm);
+  }
+
+  .resultsHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .strategyButton {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
 }

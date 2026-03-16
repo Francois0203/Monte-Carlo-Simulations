@@ -1,0 +1,293 @@
+:root {
+    /* ==================== GENERAL SETTINGS ==================== */
+    /* Font Sizes - Responsive Typography */
+    --font-size-xs: 0.875rem;     /* 14px */
+    --font-size-sm: 0.9375rem;    /* 15px */
+    --font-size-base: 1rem;       /* 16px */
+    --font-size-md: 1.125rem;     /* 18px */
+    --font-size-lg: 1.25rem;      /* 20px */
+    --font-size-xl: 1.5rem;       /* 24px */
+    --font-size-2xl: 1.875rem;    /* 30px */
+    --font-size-3xl: 2.25rem;     /* 36px */
+    --font-size-4xl: 3rem;        /* 48px */
+
+    /* Spacing System */
+    --spacing-xs: 0.25rem;        /* 4px */
+    --spacing-sm: 0.5rem;         /* 8px */
+    --spacing-md: 1rem;           /* 16px */
+    --spacing-lg: 1.5rem;         /* 24px */
+    --spacing-xl: 2rem;           /* 32px */
+    --spacing-2xl: 3rem;          /* 48px */
+    --spacing-3xl: 4rem;          /* 64px */
+    --spacing-4xl: 5rem;          /* 80px */
+    --spacing-5xl: 6rem;          /* 96px */
+    --spacing-6xl: 8rem;          /* 128px */
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;        /* 6px */
+    --radius-md: 0.5rem;          /* 8px */
+    --radius-lg: 0.75rem;         /* 12px */
+    --radius-xl: 1rem;            /* 16px */
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 350ms ease;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    /* Z-Index Scale */
+    --z-base: 1;
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+
+    /* ==================== CASINO COLOR PALETTE (Red & Black) ==================== */
+
+    /* Light Mode - Clean, Professional with Red Accents */
+    --primary-text-color-light: #1c1917;         /* Stone 900 - Rich dark for readability */
+    --secondary-text-color-light: #44403c;       /* Stone 700 - Secondary text */
+    --tertiary-text-color-light: #78716c;        /* Stone 500 - Muted text */
+
+    /* Dark Mode - Soft whites with warmth */
+    --primary-text-color-dark: #fafaf9;          /* Stone 50 - Soft white */
+    --secondary-text-color-dark: #e7e5e4;        /* Stone 200 - Secondary */
+    --tertiary-text-color-dark: #d6d3d1;         /* Stone 300 - Muted */
+
+    --disabled-color-light: #a8a29e;             /* Stone 400 */
+    --disabled-color-dark: #78716c;              /* Stone 500 */
+
+    /* Status Colors - Professional & Accessible */
+    --error-color: #dc2626;                      /* Red 600 */
+    --warning-color: #f59e0b;                    /* Amber 500 */
+    --success-color: #10b981;                    /* Emerald 500 */
+    --info-color: #3b82f6;                       /* Blue 500 */
+
+    --success-background-color-light: #d1fae5;   /* Emerald 100 */
+    --warning-background-color-light: #fef3c7;   /* Amber 100 */
+    --error-background-color-light: #fee2e2;     /* Red 100 */
+    --info-background-color-light: #dbeafe;      /* Blue 100 */
+
+    --success-background-color-dark: #064e3b;    /* Emerald 900 */
+    --warning-background-color-dark: #78350f;    /* Amber 900 */
+    --error-background-color-dark: #7f1d1d;      /* Red 900 */
+    --info-background-color-dark: #1e3a8a;       /* Blue 900 */
+
+    /* Accent Colors - Red Casino Palette */
+    /* Light Mode Accents */
+    --accent-1-light: #dc2626;        /* Red 600 - Primary brand */
+    --accent-2-light: #b91c1c;        /* Red 700 - Secondary brand */
+    --accent-3-light: #991b1b;        /* Red 800 - Tertiary accent */
+    --accent-4-light: #7f1d1d;        /* Red 900 - Fourth accent */
+    --accent-hover-light: #7f1d1d;    /* Red 900 - Hover state */
+
+    /* Dark Mode Accents - Brighter for contrast */
+    --accent-1-dark: #f87171;         /* Red 400 */
+    --accent-2-dark: #ef4444;         /* Red 500 */
+    --accent-3-dark: #dc2626;         /* Red 600 */
+    --accent-4-dark: #b91c1c;         /* Red 700 */
+    --accent-hover-dark: #fca5a5;     /* Red 300 */
+
+    /* Accent RGB values for transparency */
+    --accent-1-rgb-light: 220, 38, 38;
+    --accent-2-rgb-light: 185, 28, 28;
+    --accent-3-rgb-light: 153, 27, 27;
+    --accent-4-rgb-light: 127, 29, 29;
+
+    --accent-1-rgb-dark: 248, 113, 113;
+    --accent-2-rgb-dark: 239, 68, 68;
+    --accent-3-rgb-dark: 220, 38, 38;
+    --accent-4-rgb-dark: 185, 28, 28;
+
+    /* Accent Background Colors */
+    --accent-1-background-light: #fee2e2;  /* Red 100 */
+    --accent-2-background-light: #fecaca;  /* Red 200 */
+    --accent-3-background-light: #fca5a5;  /* Red 300 */
+    --accent-4-background-light: #f87171;  /* Red 400 */
+
+    --accent-1-background-dark: #7f1d1d;   /* Red 900 */
+    --accent-2-background-dark: #991b1b;   /* Red 800 */
+    --accent-3-background-dark: #b91c1c;   /* Red 700 */
+    --accent-4-background-dark: #dc2626;   /* Red 600 */
+
+    /* Main Background Colors */
+    /* Light Mode - Clean whites and subtle grays */
+    --background-0-light: #fafaf9;               /* Stone 50 - Softest gray */
+    --background-1-light: #ffffff;               /* Pure white */
+    --background-2-light: #f5f5f4;               /* Stone 100 */
+    --background-3-light: #e7e5e4;               /* Stone 200 */
+    --background-4-light: #d6d3d1;               /* Stone 300 */
+    --frosted-background-light: rgba(255, 255, 255, 0.8);
+    --border-color-light: #e7e5e4;               /* Stone 200 */
+    --border-color-hover-light: #d6d3d1;         /* Stone 300 */
+
+    /* Dark Mode - Rich, professional darks (Casino feel) */
+    --background-0-dark: #0c0a09;                /* Stone 950 */
+    --background-1-dark: #1c1917;                /* Stone 900 */
+    --background-2-dark: #292524;                /* Stone 800 */
+    --background-3-dark: #44403c;                /* Stone 700 */
+    --background-4-dark: #57534e;                /* Stone 600 */
+    --frosted-background-dark: rgba(28, 25, 23, 0.8);
+    --border-color-dark: #44403c;                /* Stone 700 */
+    --border-color-hover-dark: #57534e;          /* Stone 600 */
+
+    /* Applied Colors (Default Light Mode) */
+    --primary-text-color: var(--primary-text-color-light);
+    --secondary-text-color: var(--secondary-text-color-light);
+    --tertiary-text-color: var(--tertiary-text-color-light);
+    --disabled-color: var(--disabled-color-light);
+
+    --background-0: var(--background-0-light);
+    --background-1: var(--background-1-light);
+    --background-2: var(--background-2-light);
+    --background-3: var(--background-3-light);
+    --background-4: var(--background-4-light);
+    --frosted-background: var(--frosted-background-light);
+    --border-color: var(--border-color-light);
+    --border-color-hover: var(--border-color-hover-light);
+
+    --accent-1: var(--accent-1-light);
+    --accent-2: var(--accent-2-light);
+    --accent-3: var(--accent-3-light);
+    --accent-4: var(--accent-4-light);
+    --accent-hover: var(--accent-hover-light);
+
+    --accent-1-rgb: var(--accent-1-rgb-light);
+    --accent-2-rgb: var(--accent-2-rgb-light);
+    --accent-3-rgb: var(--accent-3-rgb-light);
+    --accent-4-rgb: var(--accent-4-rgb-light);
+
+    --accent-1-background: var(--accent-1-background-light);
+    --accent-2-background: var(--accent-2-background-light);
+    --accent-3-background: var(--accent-3-background-light);
+    --accent-4-background: var(--accent-4-background-light);
+
+    --success-background-color: var(--success-background-color-light);
+    --warning-background-color: var(--warning-background-color-light);
+    --error-background-color: var(--error-background-color-light);
+    --info-background-color: var(--info-background-color-light);
+}
+
+
+/* ==================== THEME OVERRIDES ==================== */
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary-text-color: var(--primary-text-color-dark);
+    --secondary-text-color: var(--secondary-text-color-dark);
+    --tertiary-text-color: var(--tertiary-text-color-dark);
+    --disabled-color: var(--disabled-color-dark);
+
+    --background-0: var(--background-0-dark);
+    --background-1: var(--background-1-dark);
+    --background-2: var(--background-2-dark);
+    --background-3: var(--background-3-dark);
+    --background-4: var(--background-4-dark);
+    --frosted-background: var(--frosted-background-dark);
+    --border-color: var(--border-color-dark);
+    --border-color-hover: var(--border-color-hover-dark);
+
+    --accent-1: var(--accent-1-dark);
+    --accent-2: var(--accent-2-dark);
+    --accent-3: var(--accent-3-dark);
+    --accent-4: var(--accent-4-dark);
+    --accent-hover: var(--accent-hover-dark);
+
+    --accent-1-rgb: var(--accent-1-rgb-dark);
+    --accent-2-rgb: var(--accent-2-rgb-dark);
+    --accent-3-rgb: var(--accent-3-rgb-dark);
+    --accent-4-rgb: var(--accent-4-rgb-dark);
+
+    --accent-1-background: var(--accent-1-background-dark);
+    --accent-2-background: var(--accent-2-background-dark);
+    --accent-3-background: var(--accent-3-background-dark);
+    --accent-4-background: var(--accent-4-background-dark);
+
+    --success-background-color: var(--success-background-color-dark);
+    --warning-background-color: var(--warning-background-color-dark);
+    --error-background-color: var(--error-background-color-dark);
+    --info-background-color: var(--info-background-color-dark);
+
+    /* Dark mode specific shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ===================== Page & Page Content ==================== */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(
+        135deg,
+        var(--background-1) 0%,
+        var(--background-2) 100%
+    );
+    background-attachment: fixed;
+    transition: background var(--transition-slow);
+}
+
+
+/* ==================== RESPONSIVE BREAKPOINTS ==================== */
+/* Mobile First Approach */
+
+/* Extra small devices (phones, less than 576px) */
+/* Default styles apply here */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    :root {
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 0.9375rem;
+        --font-size-base: 1rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    :root {
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 0.9375rem;
+        --font-size-base: 1rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    :root {
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 0.9375rem;
+        --font-size-base: 1.0625rem;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    :root {
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 0.9375rem;
+        --font-size-base: 1.0625rem;
+    }
+}

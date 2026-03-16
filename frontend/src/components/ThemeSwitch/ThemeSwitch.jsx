@@ -16,7 +16,6 @@ const ThemeSwitch = ({ theme, toggleTheme }) => {
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
       aria-label="Toggle theme"
-      type="button"
     >
       <span className={styles.icon} aria-hidden="true">
         {theme === 'dark' ? <FaSun /> : <FaMoon />}

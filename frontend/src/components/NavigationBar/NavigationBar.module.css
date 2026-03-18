@@ -1,6 +1,6 @@
 /* ============================================================
    NavigationBar.module.css
-   Fixed top bar + dropdown nav panel
+   Modern fixed top bar + sleek dropdown nav panel
    ============================================================ */
 
 /* ---- Top Bar ---- */
@@ -14,59 +14,69 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.25rem;
-  background: var(--card-primary);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(20px) saturate(1.6);
-  -webkit-backdrop-filter: blur(20px) saturate(1.6);
-  transition: background var(--transition-slow), border-color var(--transition-slow);
+  padding: 0 1.5rem;
+  background: color-mix(in srgb, var(--card-primary) 85%, transparent);
+  border-bottom: 1.5px solid var(--border);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  transition: all var(--transition-slow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* ---- Left section ---- */
 .left {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
+  gap: 1rem;
   min-width: 0;
 }
 
 /* ---- Menu button ---- */
 .menuBtn {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
   color: var(--text-secondary);
   cursor: pointer;
   font-size: 1rem;
   transition: all var(--transition-fast);
   outline: none;
   flex-shrink: 0;
+  box-shadow: var(--shadow-xs);
 }
 
 .menuBtn:hover {
-  background: color-mix(in srgb, var(--accent-1) 10%, var(--surface));
+  background: color-mix(in srgb, var(--accent-1) 8%, var(--surface));
   border-color: var(--accent-1);
   color: var(--accent-1);
-  transform: scale(1.04);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm), 
+              0 0 0 3px color-mix(in srgb, var(--accent-1) 8%, transparent);
 }
 
 .menuBtnOpen {
   background: color-mix(in srgb, var(--accent-1) 12%, var(--surface));
   border-color: var(--accent-1);
   color: var(--accent-1);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-1) 10%, transparent);
 }
 
 /* ---- Divider ---- */
 .divider {
-  width: 1px;
-  height: 22px;
-  background: var(--border);
+  width: 1.5px;
+  height: 24px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--border),
+    transparent
+  );
   flex-shrink: 0;
 }
 
@@ -74,16 +84,16 @@
 .pageLabel {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
   color: var(--route-color, var(--accent-1));
   min-width: 0;
 }
 
 .pageIcon {
-  font-size: 1.2rem;
+  font-size: 1.375rem;
   flex-shrink: 0;
-  filter: drop-shadow(0 1px 4px currentColor);
-  opacity: 0.9;
+  filter: drop-shadow(0 2px 6px currentColor);
+  opacity: 0.95;
 }
 
 .pageLabelText {
@@ -91,56 +101,60 @@
   flex-direction: column;
   line-height: 1;
   min-width: 0;
+  gap: 0.125rem;
 }
 
 .pageName {
-  font-size: 0.9375rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: -0.01em;
 }
 
 .pageSub {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
+  font-weight: 700;
 }
 
 /* ---- Right section ---- */
 .right {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
   flex-shrink: 0;
 }
 
 /* ---- Dropdown panel ---- */
 .dropdown {
   position: fixed;
-  top: calc(var(--navbar-height) + 6px);
-  left: 12px;
-  width: 228px;
-  background: var(--card-primary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(20px) saturate(1.6);
-  -webkit-backdrop-filter: blur(20px) saturate(1.6);
-  padding: 6px;
+  top: calc(var(--navbar-height) + 8px);
+  left: 16px;
+  width: 260px;
+  background: color-mix(in srgb, var(--card-primary) 95%, transparent);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
+              var(--shadow-xl);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  padding: 0.5rem;
   z-index: 999;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  animation: dropIn 0.14s cubic-bezier(0.34, 1.56, 0.64, 1);
+  gap: 0.25rem;
+  animation: dropIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes dropIn {
   from {
     opacity: 0;
-    transform: translateY(-8px) scale(0.97);
+    transform: translateY(-12px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -152,16 +166,16 @@
 .navLink {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.875rem;
   width: 100%;
-  padding: 0.6rem 0.75rem;
+  padding: 0.75rem 0.875rem;
   background: none;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   color: var(--text-primary);
   cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
   text-align: left;
   transition: all var(--transition-fast);
   outline: none;
@@ -169,50 +183,57 @@
 }
 
 .navLink:hover {
-  background: color-mix(in srgb, var(--link-color) 10%, transparent);
+  background: color-mix(in srgb, var(--link-color) 8%, transparent);
   color: var(--link-color, var(--accent-1));
+  transform: translateX(2px);
 }
 
 .navLinkActive {
   background: color-mix(in srgb, var(--link-color) 12%, transparent);
   color: var(--link-color, var(--accent-1));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--link-color) 15%, transparent);
 }
 
 .navLinkIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: color-mix(in srgb, var(--link-color) 14%, transparent);
-  border-radius: var(--radius-sm);
-  font-size: 0.9375rem;
+  width: 32px;
+  height: 32px;
+  background: color-mix(in srgb, var(--link-color) 12%, transparent);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
   flex-shrink: 0;
   color: var(--link-color, var(--accent-1));
   transition: all var(--transition-fast);
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--link-color) 10%, transparent);
 }
 
 .navLink:hover .navLinkIcon,
 .navLinkActive .navLinkIcon {
   background: color-mix(in srgb, var(--link-color) 20%, transparent);
+  transform: scale(1.08);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--link-color) 20%, transparent);
 }
 
 .navLinkLabel {
   flex: 1;
+  letter-spacing: -0.01em;
 }
 
 .navLinkDot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   background: var(--link-color, var(--accent-1));
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 0 6px currentColor;
 }
 
 /* ---- Mobile adjustments ---- */
 @media (max-width: 480px) {
   .topBar {
-    padding: 0 1rem;
+    padding: 0 1.125rem;
   }
 
   .pageSub {
@@ -220,8 +241,13 @@
   }
 
   .dropdown {
-    left: 8px;
-    right: 8px;
+    left: 12px;
+    right: 12px;
     width: auto;
+  }
+  
+  .menuBtn {
+    width: 36px;
+    height: 36px;
   }
 }

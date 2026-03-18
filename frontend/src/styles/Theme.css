@@ -1,42 +1,50 @@
 :root {
     /* ==================== GENERAL SETTINGS ==================== */
     /* Font Sizes - Responsive Typography */
-    --font-size-xs: 0.875rem;     /* 14px */
-    --font-size-sm: 0.9375rem;    /* 15px */
-    --font-size-base: 1rem;       /* 16px */
-    --font-size-md: 1.125rem;     /* 18px */
-    --font-size-lg: 1.25rem;      /* 20px */
-    --font-size-xl: 1.5rem;       /* 24px */
-    --font-size-2xl: 1.875rem;    /* 30px */
-    --font-size-3xl: 2.25rem;     /* 36px */
-    --font-size-4xl: 3rem;        /* 48px */
+    --font-size-xs: 0.8125rem;    /* 13px */
+    --font-size-sm: 0.875rem;     /* 14px */
+    --font-size-base: 0.9375rem;  /* 15px */
+    --font-size-md: 1rem;         /* 16px */
+    --font-size-lg: 1.125rem;     /* 18px */
+    --font-size-xl: 1.25rem;      /* 20px */
+    --font-size-2xl: 1.5rem;      /* 24px */
+    --font-size-3xl: 2rem;        /* 32px */
+    --font-size-4xl: 2.5rem;      /* 40px */
+    --font-size-5xl: 3rem;        /* 48px */
 
     /* Spacing System */
     --spacing-xs: 0.25rem;        /* 4px */
     --spacing-sm: 0.5rem;         /* 8px */
-    --spacing-md: 1rem;           /* 16px */
-    --spacing-lg: 1.5rem;         /* 24px */
-    --spacing-xl: 2rem;           /* 32px */
-    --spacing-2xl: 3rem;          /* 48px */
-    --spacing-3xl: 4rem;          /* 64px */
+    --spacing-md: 0.75rem;        /* 12px */
+    --spacing-lg: 1rem;           /* 16px */
+    --spacing-xl: 1.5rem;         /* 24px */
+    --spacing-2xl: 2rem;          /* 32px */
+    --spacing-3xl: 3rem;          /* 48px */
+    --spacing-4xl: 4rem;          /* 64px */
 
-    /* Border Radius */
+    /* Border Radius - More modern */
+    --radius-xs: 0.25rem;         /* 4px */
     --radius-sm: 0.375rem;        /* 6px */
-    --radius-md: 0.5rem;          /* 8px */
-    --radius-lg: 0.75rem;         /* 12px */
-    --radius-xl: 1rem;            /* 16px */
+    --radius-md: 0.625rem;        /* 10px */
+    --radius-lg: 0.875rem;        /* 14px */
+    --radius-xl: 1.125rem;        /* 18px */
+    --radius-2xl: 1.5rem;         /* 24px */
     --radius-full: 9999px;
 
-    /* Transitions */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 350ms ease;
+    /* Transitions - Smoother, more refined */
+    --transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    /* Shadows - More refined depths */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.06);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 
     /* Z-Index Scale */
     --z-base: 1;
@@ -48,81 +56,81 @@
     --z-popover: 1060;
     --z-tooltip: 1070;
 
-    /* ==================== PROFESSIONAL COLOR PALETTE ==================== */
+    /* ==================== MODERN COLOR PALETTE ==================== */
 
-    /* Light Mode - Clean, Professional Blues & Grays */
-    --primary-text-color-light: #1e293b;         /* Slate 800 - Rich dark for readability */
-    --secondary-text-color-light: #475569;       /* Slate 600 - Secondary text */
-    --tertiary-text-color-light: #64748b;        /* Slate 500 - Muted text */
+    /* Light Mode - Ultra-clean with depth */
+    --primary-text-color-light: #0f172a;         /* Slate 900 - Deep, rich */
+    --secondary-text-color-light: #334155;       /* Slate 700 - Medium */
+    --tertiary-text-color-light: #64748b;        /* Slate 500 - Muted */
 
-    /* Dark Mode - Soft whites with warmth */
-    --primary-text-color-dark: #f8fafc;          /* Slate 50 - Soft white */
-    --secondary-text-color-dark: #e2e8f0;        /* Slate 200 - Secondary */
-    --tertiary-text-color-dark: #cbd5e1;         /* Slate 300 - Muted */
+    /* Dark Mode - Crisp whites with clarity */
+    --primary-text-color-dark: #f1f5f9;          /* Slate 100 - Bright white */
+    --secondary-text-color-dark: #cbd5e1;        /* Slate 300 - Medium */
+    --tertiary-text-color-dark: #94a3b8;         /* Slate 400 - Muted */
 
-    --disabled-color-light: #94a3b8;             /* Slate 400 */
-    --disabled-color-dark: #64748b;              /* Slate 500 */
+    --disabled-color-light: #cbd5e1;             /* Slate 300 */
+    --disabled-color-dark: #475569;              /* Slate 600 */
 
-    /* Status Colors - Professional & Accessible */
-    --error-color: #dc2626;                      /* Red 600 */
+    /* Status Colors - Vibrant & Accessible */
+    --error-color: #ef4444;                      /* Red 500 */
     --warning-color: #f59e0b;                    /* Amber 500 */
-    --success-color: #10b981;                    /* Emerald 500 */
+    --success-color: #22c55e;                    /* Green 500 */
     --info-color: #3b82f6;                       /* Blue 500 */
 
-    --success-background-color-light: #d1fae5;   /* Emerald 100 */
+    --success-background-color-light: #dcfce7;   /* Green 100 */
     --warning-background-color-light: #fef3c7;   /* Amber 100 */
     --error-background-color-light: #fee2e2;     /* Red 100 */
     --info-background-color-light: #dbeafe;      /* Blue 100 */
 
-    --success-background-color-dark: #064e3b;    /* Emerald 900 */
+    --success-background-color-dark: #14532d;    /* Green 900 */
     --warning-background-color-dark: #78350f;    /* Amber 900 */
     --error-background-color-dark: #7f1d1d;      /* Red 900 */
     --info-background-color-dark: #1e3a8a;       /* Blue 900 */
 
-    /* Accent Colors - Professional blue/cyan/purple palette */
-    /* LIGHT (vibrant for light backgrounds) */
-    --accent-1-light: #3b82f6; /* blue 500 */
-    --accent-2-light: #06b6d4; /* cyan 500 */
-    --accent-3-light: #8b5cf6; /* violet 500 */
-    --accent-4-light: #6366f1; /* indigo 500 */
-    --accent-hover-light: #2563eb; /* blue 600 */
+    /* Accent Colors - Modern vibrant palette */
+    /* LIGHT (vibrant, energetic) */
+    --accent-1-light: #2563eb; /* blue 600 */
+    --accent-2-light: #0891b2; /* cyan 600 */
+    --accent-3-light: #7c3aed; /* violet 600 */
+    --accent-4-light: #4f46e5; /* indigo 600 */
+    --accent-hover-light: #1d4ed8; /* blue 700 */
 
-    /* DARK (brighter for dark backgrounds) */
+    /* DARK (bright, glowing) */
     --accent-1-dark: #60a5fa; /* blue 400 */
     --accent-2-dark: #22d3ee; /* cyan 400 */
     --accent-3-dark: #a78bfa; /* violet 400 */
     --accent-4-dark: #818cf8; /* indigo 400 */
     --accent-hover-dark: #93c5fd; /* blue 300 */
 
-    /* Accent Background Colors */
+    /* Accent Background Colors - More vibrant */
     /* LIGHT */
-    --accent-1-background-light: rgba(59, 130, 246, 0.1);
-    --accent-2-background-light: rgba(6, 182, 212, 0.1);
-    --accent-3-background-light: rgba(139, 92, 246, 0.1);
-    --accent-4-background-light: rgba(99, 102, 241, 0.1);
+    --accent-1-background-light: rgba(37, 99, 235, 0.08);
+    --accent-2-background-light: rgba(8, 145, 178, 0.08);
+    --accent-3-background-light: rgba(124, 58, 237, 0.08);
+    --accent-4-background-light: rgba(79, 70, 229, 0.08);
 
     /* DARK */
-    --accent-1-background-dark: rgba(96, 165, 250, 0.15);
-    --accent-2-background-dark: rgba(34, 211, 238, 0.15);
-    --accent-3-background-dark: rgba(167, 139, 250, 0.15);
-    --accent-4-background-dark: rgba(129, 140, 248, 0.15);
+    --accent-1-background-dark: rgba(96, 165, 250, 0.12);
+    --accent-2-background-dark: rgba(34, 211, 238, 0.12);
+    --accent-3-background-dark: rgba(167, 139, 250, 0.12);
+    --accent-4-background-dark: rgba(129, 140, 248, 0.12);
 
-    /* Main Background Colors */
-    /* Light mode */
-    --background-1-light: #ffffff;
-    --background-2-light: #f0f2f5;
-    --background-3-light: #dfe2e7;
-    --background-4-light: #c9ced6;
-    --frosted-background-light: rgba(255, 255, 255, 0.6);
+    /* Main Background Colors - Cleaner, more refined */
+    /* Light mode - Multiple layers for depth */
+    --background-1-light: #ffffff;               /* Pure white */
+    --background-2-light: #f8fafc;               /* Slate 50 */
+    --background-3-light: #f1f5f9;               /* Slate 100 */
+    --background-4-light: #e2e8f0;               /* Slate 200 */
+    --frosted-background-light: rgba(255, 255, 255, 0.7);
     --border-color-light: #e2e8f0;               /* Slate 200 */
     --border-color-hover-light: #cbd5e1;         /* Slate 300 */
 
-    /* Dark mode */
-    --background-1-dark: #3a3b3f;
-    --background-2-dark: #2f3035;
-    --background-3-dark: #242529;
-    --background-4-dark: #18191c;
-    --frosted-background-dark: rgba(24, 25, 28, 0.6);
+    /* Dark mode - Rich, deep with subtle variation */
+    --background-1-dark: #0f172a;                /* Slate 900 - Deep */
+    --background-2-dark: #1e293b;                /* Slate 800 - Medium */
+    --background-3-dark: #334155;                /* Slate 700 - Elevated */
+    --background-4-dark: #475569;                /* Slate 600 - Highest */
+    --frosted-background-dark: rgba(15, 23, 42, 0.8);
     --border-color-dark: #334155;                /* Slate 700 */
     --border-color-hover-dark: #475569;          /* Slate 600 */
 
@@ -201,11 +209,13 @@
     --error-background-color: var(--error-background-color-dark);
     --info-background-color: var(--info-background-color-dark);
 
-    /* Dark mode specific shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+    /* Dark mode specific shadows - More pronounced */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.6), 0 1px 2px -1px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -4px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.8), 0 8px 10px -6px rgba(0, 0, 0, 0.7);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.95);
 }
 
 
@@ -225,7 +235,7 @@ html, body, #root {
     height: 100%;
     margin: 0;
     background: linear-gradient(
-        135deg,
+        180deg,
         var(--background-1) 0%,
         var(--background-2) 100%
     );
